@@ -1,16 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Run : MonoBehaviour
 {
-    // Start is called before the first frame update
+    public float speed = 0.1f;
+    public int checkpoints[] =  new checkpiont;
+    
     void Start()
     {
         
     }
 
-    // Update is called once per frame
     void Update()
     {
         

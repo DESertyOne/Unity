@@ -1,31 +1,32 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class Run : MonoBehaviour
 {
-    public float speed = 0.1f;
+    public float speed;
     public Transform[] pointone;
-    public int moveingTo = 0;
-    public int movementDerection = 1;
-    
+    public bool movementDerection;
+    private Vector3 target;
+
     void Start()
     {
-        
+        target = pointone[0].position;
     }
 
     void Update()
     {
-        if (pointone == null || pointone.Length < 1)
-        {
-            return;
-        }
-        while(true) 
-        {
-          transform.position = Vector3.MoveTowards(transform.position, pointone[pointone.Length+1].position,Time.deltaTime * speed);
+        transform.LookAt(target);
+        transform.Rotate(0, 0, 0.2f);
 
+        if (movementDerection)
+        {
+            transform.position = Vector3.MoveTowards(transform.position, target, Time.deltaTime * speed);
         }
-
+        if (transform.position == target)
+        {
+            if (target == pointone[0].position)
+            {
+                target = pointone[pointone.Length - 1].position;
+            }
+        }
     }
 }

@@ -731,12 +731,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 777805abb2394d24cb97ac91a3f48c8d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 1.2
+  speed: 2
   pointone:
   - {fileID: 716981}
   - {fileID: 833442766}
   - {fileID: 1125385374}
   movementDerection: 1
+  indextarget: 0
+  back: 0
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

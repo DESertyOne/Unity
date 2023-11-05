@@ -23,18 +23,43 @@ public class Run : MonoBehaviour
 
         if (movementDerection)
         {
-            transform.Rotate(0, 0, 0.2f);
             transform.LookAt(target);
             transform.position = Vector3.MoveTowards(transform.position, target, Time.deltaTime * speed);
-
         }
-        if (back)
+        if (!back)
         {
-            if (transform.position == pointone[indextarget].position)
+            if (indextarget < pointone.Length - 1)
             {
-                indextarget++;
-                target = pointone[indextarget].position;
+                if (transform.position == pointone[indextarget].position)
+                {
+                    indextarget++;
+                    target = pointone[indextarget].position;
+                }
+            }
+            if (indextarget == pointone.Length - 1)
+            {
+                back = true;
             }
         }
+        else
+        {
+            if (0 < indextarget)
+            {
+                if (transform.position == pointone[indextarget].position)
+                {
+                    indextarget--;
+                    target = pointone[indextarget].position;
+                }
+            }
+            if (indextarget == 0)
+            {
+                back = false;
+            }
+
+        }
+
     }
+
 }
+
+

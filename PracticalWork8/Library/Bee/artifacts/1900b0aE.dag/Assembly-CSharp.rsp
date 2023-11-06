@@ -352,7 +352,8 @@
 -r:"Library/Bee/artifacts/1900b0aE.dag/UnityEngine.UI.ref.dll"
 -analyzer:"D:/UnityEditor/2022.3.10f1/Editor/Data/Tools/Unity.SourceGenerators/Unity.Properties.SourceGenerator.dll"
 -analyzer:"D:/UnityEditor/2022.3.10f1/Editor/Data/Tools/Unity.SourceGenerators/Unity.SourceGenerators.dll"
-"Assets/Scenes/Script/Run.cs"
+"Assets/Script/RelayRaceRun.cs"
+"Assets/Script/Run.cs"
 -langversion:9.0
 
 /deterministic

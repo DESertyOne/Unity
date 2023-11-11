@@ -1,54 +1,49 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class RelayRaceRun : MonoBehaviour
 {
     public Transform[] athlete;
     public float Speed;
-    private Transform nextTargetTransform;
     private float passDistance = 0.1f;
     private int indexTarget;
-    private bool nextAthlete;
+    private int indexRuner;
     private Vector3 target;
+    private Vector3 runer;
     public bool movement;
 
     void Start()
     {
-        indexTarget = 0;       
-        nextTargetTransform.SetParent(athlete[indexTarget]);
+        indexRuner = 0;
+        indexTarget = 1;
         target = athlete[indexTarget].position;
-
+        runer = athlete[indexRuner].position;
     }
 
     void Update()
     {
         if (movement)
         {
-            transform.LookAt(nextTargetTransform);
-            transform.position = Vector3.MoveTowards(transform.position, target, Speed * Time.deltaTime);
+            transform.position = Vector3.MoveTowards(runer, target, Speed * Time.deltaTime);
         }
-
+        NextAthlete();
     }
     public void NextAthlete()
-    { 
-        if(nextAthlete)
+    {
+        if(runer == target)
         {
-            if(indexTarget < athlete.Length-1)
+            indexRuner++;
+            indexRuner++;
+            if(indexTarget > athlete.Length-1)
             {
-                if(transform.position == athlete[indexTarget].position)
+                indexRuner--;
+                indexTarget--;
+                if(indexTarget < 0)
                 {
-                    indexTarget++;
-                    target = athlete[indexTarget].position;
-                    nextTargetTransform.SetParent(athlete[indexTarget] );
+                    indexRuner++;
+                    indexRuner++;
                 }
-                //else if (  )
-                //{
-
-                //}
             }
         }
     }
-    
+
 }

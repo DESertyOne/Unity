@@ -1,49 +1,65 @@
+using UnityEditor;
 using UnityEngine;
 
 public class RelayRaceRun : MonoBehaviour
 {
-    public Transform[] athlete;
-    public float Speed;
-    private float passDistance = 0.1f;
-    private int indexTarget;
+    [SerializeField] private Transform[] _athlete;
+    [SerializeField] private float Speed;
+    [SerializeField] private bool movement;
+    [SerializeField] private GameObject Stick;
     private int indexRuner;
-    private Vector3 target;
-    private Vector3 runer;
-    public bool movement;
+    private int indexTarget;
+    private Transform runner;
+    private Transform target;
 
     void Start()
     {
         indexRuner = 0;
         indexTarget = 1;
-        target = athlete[indexTarget].position;
-        runer = athlete[indexRuner].position;
+        CachedTarnsform();
     }
 
     void Update()
     {
-        if (movement)
-        {
-            transform.position = Vector3.MoveTowards(runer, target, Speed * Time.deltaTime);
-        }
+        Move();
         NextAthlete();
     }
-    public void NextAthlete()
+    private void CachedTarnsform()
     {
-        if(runer == target)
+        runner = _athlete[indexRuner];
+        target = _athlete[indexTarget];
+    }
+    private void NextAthlete()
+    {
+        if (runner.position == target.position)
         {
-            indexRuner++;
-            indexRuner++;
-            if(indexTarget > athlete.Length-1)
-            {
-                indexRuner--;
-                indexTarget--;
-                if(indexTarget < 0)
-                {
-                    indexRuner++;
-                    indexRuner++;
-                }
-            }
+            PassingTheBaton();
+            CachedTarnsform();
         }
     }
+    private void Move()
+    {
+        float passDistance = Speed * Time.deltaTime;
+        if (movement)
+        {
+            runner.position = Vector3.MoveTowards(runner.position, target.position, passDistance);
+            runner.LookAt(target.position);
+            BroadcastStick(runner);
+        }
+    }
+    private void PassingTheBaton()
+    {
+        indexRuner = indexTarget;
+        indexTarget++;
+        if (indexTarget >= _athlete.Length)
+        {
+            indexTarget = 0;
+        }
+    }
+    private void BroadcastStick(Transform newParent)
+    {
+       Stick.transform.SetParent(newParent, false);
+    }
+
 
 }

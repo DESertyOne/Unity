@@ -7,7 +7,7 @@ public class pushball : MonoBehaviour
 
     void Start()
     {                
-        GetComponent<Rigidbody>().AddForce(0,0,-10, ForceMode.Impulse);
+        GetComponent<Rigidbody>().AddForce(0,0,-30, ForceMode.Impulse);
     }
 
     void FixedUpdate()

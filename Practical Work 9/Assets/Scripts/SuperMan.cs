@@ -4,15 +4,17 @@ using UnityEngine;
 
 public class SuperMan : MonoBehaviour
 {
-    // Start is called before the first frame update
+    [SerializeField] Transform _Enemy;
+    private Transform _EnemyTarget;
     void Start()
     {
-        
+        _EnemyTarget = _Enemy;
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
-        
+        GetComponent<Rigidbody>().AddForce(20,0,0, ForceMode.Impulse) ;
+        transform.position = Vector3.MoveTowards(transform.position, _EnemyTarget.position, Time.deltaTime) ;
     }
 }

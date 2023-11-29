@@ -11,7 +11,6 @@ public class SuperMan : MonoBehaviour
         _EnemyTarget = _Enemy;
     }
 
-    // Update is called once per frame
     void FixedUpdate()
     {
         GetComponent<Rigidbody>().AddForce(20,0,0, ForceMode.Impulse) ;

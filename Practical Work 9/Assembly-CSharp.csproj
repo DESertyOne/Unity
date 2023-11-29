@@ -60,6 +60,7 @@
   <ItemGroup>
     <Compile Include="Assets\Scripts\SphereTrtggerGravity.cs" />
     <Compile Include="Assets\Scripts\SuperMan.cs" />
+    <Compile Include="Assets\Scripts\BombTimer.cs" />
     <Compile Include="Assets\Scripts\push ball.cs" />
   </ItemGroup>
   <ItemGroup>
